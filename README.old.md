@@ -5,6 +5,7 @@
     - login / signup
         - sign in  / signup form
         - redirect to Browse page
+        - Login form 
     - Browse page
         - header
         - movie
