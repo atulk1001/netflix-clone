@@ -1,14 +1,35 @@
-import React from "react";
-import { signOut } from "firebase/auth";
-import { Auth } from "../utils/firebase";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { addUser, removeUser } from "../utils/userSlice";
+import { Auth } from "../utils/firebase";
+import { GUEST_USER_AVATAR, LOGO } from "../utils/constant";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = Auth;
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log("Auth Status Changed .......");
+      if (user) {
+        
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+    return () => unsubscribe();
+  }, [dispatch]);
+
   const handleLogOut = () => {
     console.log("logout button clicked ........");
     signOut(auth).then(() => {
@@ -21,25 +42,23 @@ const Header = () => {
 
   return (
     <>
-      <div className="absolute w-screen px-8 py-1 bg-gradient-to-b from-black z-10 flex justify-between">
-        <img
+      <div>
+        <div className="absolute w-screen px-8 py-5 bg-gradient-to-b from-black z-10 justify-between"> <img
           className="w-44"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+          src={LOGO}
           alt="Netflix logo"
-        />
-      </div>
-      { user && 
-        <div>
-          <div className="float-right text-black text-xs" title = {"Logged in as "+user.displayName} >
-           <div><img src={user.photoURL === null ? "https://www.iconpacks.net/icons/2/free-user-icon-3297-thumb.png": user.photoURL} alt="user icon" className="h-16 mt-3" />
-           </div>
-            <div className=" text-black mr-3 font-bold">{user.displayName}</div>
-            <div className=" text-red-500 mr-3 font-bold text-md "><button className="bg-red-300 p-2 mt-1 rounded-sm" onClick={handleLogOut}> Log Out </button></div>
-         </div>
-         
+        /></div>
+    
+      {user &&
+        <div className="relative float-right z-10 mt-0 mr-1">
+          <div className="text-black text-xs float-right" title={"Logged in as " + user.displayName} >
+            <div><img src={user.photoURL === null ? {GUEST_USER_AVATAR} : user.photoURL} alt="user icon" className="h-14 w-20 mt-1 " />
+            </div>
+            <div className="text-red-500 font-bold "><button className="bg-white bg-opacity-55 border-2 order-neutral-500 hover:bg-opacity-30 w-20 mt-1 mb-1 p-1" onClick={handleLogOut}> Log Out </button></div>
+          </div>
         </div>
-     
       }
+      </div>
     </>
   );
 };

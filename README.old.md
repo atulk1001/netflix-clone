@@ -15,7 +15,22 @@
     - SignOut
     - update profile
     - Fetch from TMDB Movies
-
+    - display name
+    - routing issue fixed for login / logout
+    - unsubscribed to the onAuthStateChanged
+    - Add hadrcoded values to constant file
+    - Register to TMDB API, create app, access token
+    - Get Data for Now playing movies list
+    - Custom Hook for Now Playing Videos
+    - Create Movie Slice
+    - Update Store with Movies Data
+    - Planning for Main Container and Secondary Container
+    - Fetch Data for Trailer Video
+    - Update Store with Trailer Video Data
+    - Embedded the YouTube Video
+    - Make youTube video Mute and Autoplay
+    - Tailwind class to play video in background and details above it.
+    - 
 
 # features
     - login / signup

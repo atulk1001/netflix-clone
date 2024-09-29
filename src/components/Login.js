@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { checkValidateData } from "../utils/validate";
 import {
@@ -10,10 +9,10 @@ import {
 import { Auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BACKGROUND_IMG } from "../utils/constant";
 
 const Login = () => {
   const dispatch = useDispatch(); 
-  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const name = useRef(null);
@@ -52,10 +51,8 @@ const Login = () => {
               const errorMessage = error.message;
               setErrorMsg(`${errorCode} ${errorMessage}`);
             });
-          navigate("/browse");
         })
         .catch((error) => {
-          console.log(error);
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMsg(`${errorCode} ${errorMessage}`);
@@ -68,8 +65,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -83,7 +78,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/bfc0fc46-24f6-4d70-85b3-7799315c01dd/web/IN-en-20240923-TRIFECTA-perspective_74e21c19-980e-45ef-bd6c-78c1a6ce9381_large.jpg"
+          src={BACKGROUND_IMG}
           alt="background"
         />
       </div>
