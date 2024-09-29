@@ -8,12 +8,10 @@ export const checkValidateData = (email,password,name,dob) => {
         if(!isPassValid) return "Password is not valid";
     }
     if(name.current) {
-        console.log("Came Here in name.......",name);
         const isNameValid = /([a-zA-Z0-9_\s]+)/.test(name.current.value);
         if(!isNameValid) return "Name is not valid";
     }
     if(dob.current) {
-        console.log("Came Here in dob. ......",dob);
         return dob.current.value.length !== 10 && "Date of Birth is not valid"
     }
     return null;
