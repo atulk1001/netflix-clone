@@ -1,11 +1,28 @@
 # netflix-clone
     - create-react-app
     - installed and configured tailwind css
+    - Header
+    - Routing of App
+    - Login Form
+    - Signup form 
+    - Validation
+    - useRef Hook
+    - Firebase setup
+    - Deploying to Prodution
+    - Create User Account
+    - Implemented Sign in 
+    - Created redux store with user slice
+    - SignOut
+    - update profile
+    - Fetch from TMDB Movies
+
+
 # features
     - login / signup
         - sign in  / signup form
         - redirect to Browse page
-        - Login form 
+        - Login form
+
     - Browse page
         - header
         - movie
