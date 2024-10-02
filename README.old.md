@@ -1,16 +1,17 @@
 # netflix-clone
+
     - create-react-app
     - installed and configured tailwind css
     - Header
     - Routing of App
     - Login Form
-    - Signup form 
+    - Signup form
     - Validation
     - useRef Hook
     - Firebase setup
     - Deploying to Prodution
     - Create User Account
-    - Implemented Sign in 
+    - Implemented Sign in
     - Created redux store with user slice
     - SignOut
     - update profile
@@ -33,8 +34,10 @@
     - Build Secondary Component
     - Build Movie Card
     - Build Movies List
+    - Custom hook for Popular Movies
 
 # features
+
     - login / signup
         - sign in  / signup form
         - redirect to Browse page
@@ -46,7 +49,7 @@
             - Trailer playing in background
             - Title and Description
             - Movie Suggestions
-                - Movies list * n 
-    - Netflix GPT 
+                - Movies list * n
+    - Netflix GPT
         - Searh bar
         - Movie Suggestions
