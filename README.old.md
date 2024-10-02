@@ -30,7 +30,9 @@
     - Embedded the YouTube Video
     - Make youTube video Mute and Autoplay
     - Tailwind class to play video in background and details above it.
-    - 
+    - Build Secondary Component
+    - Build Movie Card
+    - Build Movies List
 
 # features
     - login / signup
