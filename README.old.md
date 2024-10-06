@@ -35,6 +35,11 @@
     - Build Movie Card
     - Build Movies List
     - Custom hook for Popular Movies
+    - GPT Search Page
+    - GPT Search Bar
+    - Multilanguage Feature in GPT Search Bar
+    - Integrate GPT Api's
+    -
 
 # features
 
