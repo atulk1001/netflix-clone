@@ -39,7 +39,10 @@
     - GPT Search Bar
     - Multilanguage Feature in GPT Search Bar
     - Integrate GPT Api's
-    -
+    - Display searched movies, re-used movie card component
+    - .env file to save secret keys
+    - Memoization
+    - Make website responsive
 
 # features
 

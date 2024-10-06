@@ -13,7 +13,7 @@ const GPTSearchBar = () => {
     console.log(searchText.current.value);
     setLoaded(true);
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${searchText.current.value}&include_adult=true&language=en-US`,
+      `https://api.themoviedb.org/3/search/movie?query=${searchText.current.value}&include_adult=false&language=en-US`,
       OPTIONS
     );
     const json = await data.json();
@@ -22,19 +22,19 @@ const GPTSearchBar = () => {
   };
   return (
     <>
-      <div className="pt-[10%] ml-[5%] flex justify-center">
+      <div className="md:pt-[10%] pt-[20%] md:ml-[1%] ml-[3%] md:flex md:justify-center ">
         <form
-          className="bg-black grid grid-cols-12 w-1/2 text-white"
+          className="md:bg-black md:grid md:grid-cols-12 md:w-1/2 w-[90%] text-sm text-white mt-[30%] md:mt-10"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
             ref={searchText}
             type="text"
-            className="p-4 m-4 col-span-9 text-black"
+            className="md:p-4 p-2 md:m-4 m-0 md:col-span-9 w-full text-black rounded-md"
             placeholder={lang[langKey].searchPlaceholder}
           />
           <button
-            className="m-4 py-2 px-3 bg-red-500 rounded-lg col-span-3"
+            className="md:p-4 p-2 md:m-6 sm:p-5 md:px-3 px-1 bg-red-500 rounded-lg md:col-span-3 md:w-[80%] w-[40%] mt-2 md:mt-5"
             onClick={handleSearch}
           >
             {lang[langKey].search}
@@ -45,7 +45,7 @@ const GPTSearchBar = () => {
         <div role="status" className="pt-[10%] ml-[5%] flex justify-center">
           <svg
             aria-hidden="true"
-            class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -59,10 +59,10 @@ const GPTSearchBar = () => {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
       )}
-      <div className="flex justify-center overflow-scroll m-5 bg-gradient-to-b from-black">
+      <div className="flex justify-center m-3 bg-gradient-to-b from-black">
         <div className="flex flex-wrap">
           {!loaded &&
             movies &&

@@ -12,7 +12,7 @@ import { addUser } from "../utils/userSlice";
 import { BACKGROUND_IMG } from "../utils/constant";
 
 const Login = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const name = useRef(null);
@@ -43,7 +43,14 @@ const Login = () => {
             .then(() => {
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
-              dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
             })
             .catch((error) => {
               // An error occurred
@@ -78,11 +85,12 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
+          className="h-screen object-cover"
           src={BACKGROUND_IMG}
           alt="background"
         />
       </div>
-      <div className="absolute backdrop-brightness-50 bg-black w-3/12 my-36 rounded-lg p-10 mx-auto right-0 left-0 text-white h-3/4 bg-opacity-70">
+      <div className="absolute backdrop-brightness-50 bg-black w-full sm:w-full md:w-3/12 my-36 rounded-lg p-10 mx-auto right-0 left-0 text-white sm:h-screen md:h-3/4 bg-opacity-70">
         <form onSubmit={(e) => e.preventDefault()}>
           <h1>Sign In</h1>
           {!isSignIn && (

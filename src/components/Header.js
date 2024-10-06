@@ -62,19 +62,19 @@ const Header = () => {
   return (
     <>
       <div>
-        <div className="absolute w-screen px-8 py-5 bg-gradient-to-b from-black z-10 justify-between">
-          <img className="w-44" src={LOGO} alt="Netflix logo" />
+        <div className="absolute w-screen px-[25%] md:px-8 md:mx-0 mx-5 md:py-5 py-2 bg-gradient-to-b from-black z-10 flex-col md:flex-row md:float-none float-start">
+          <img className="md:w-44 w-32 " src={LOGO} alt="Netflix logo" />
         </div>
         {user && (
-          <div className="relative z-10 mt-0 mr-1">
-            <div className="text-black text-xs float-right">
-              <div className="mx-2 mt-0 p-2 ">
+          <div className="relative z-10 mt-0 md:mr-1 mr-5">
+            <div className="text-black text-xs md:float-right float-left">
+              <div className="md:mx-1 mx-3 mt-0 p-2 ">
                 <select
-                  className="mx-2 mt-2 p-2 bg-black text-white font-semibold rounded-md"
+                  className="mx-1 mt-2 p-2 bg-black text-white font-semibold rounded-md"
                   onChange={handleLangChange}
                 >
                   {SUPPORTED_LANG.map((lng) => (
-                    <option key="lng.identifier" value={lng.identifier}>
+                    <option key={lng.identifier} value={lng.identifier}>
                       {lng.name}
                     </option>
                   ))}
@@ -83,20 +83,20 @@ const Header = () => {
             </div>
 
             <div
-              className="text-black text-xs float-right"
+              className="text-black text-xs float-right "
               title={"Logged in as " + user.displayName}
             >
-              <div className="mr-2">
+              <div className="md:mr-1 mr-0">
                 <button
-                  className="bg-red-500 rounded-md hover:bg-opacity-50 w-24 mt-3 mb-1 p-2 ml-1 text-white font-semibold"
+                  className="bg-red-500 rounded-md hover:bg-opacity-50 w-24 md:mt-3 mt-5 md:mb-1 mb-3 p-2 ml-1 text-white font-semibold"
                   onClick={handleGptSearchViewToggle}
                 >
                   {showGpt ? "Home" : "GPT Search"}
                 </button>
               </div>
-              <div className="mr-2">
+              <div className="md:mr-1 mr-0">
                 <button
-                  className="bg-red-500 rounded-md hover:bg-opacity-50 w-24 mt-3 mb-1 ml-1 p-2 text-white font-semibold"
+                  className="bg-red-500 rounded-md hover:bg-opacity-50 w-24 md:mt-3 mt-0 md:mb-1 mb-3 ml-1 p-2 text-white font-semibold"
                   onClick={handleLogOut}
                 >
                   Log Out
@@ -105,12 +105,12 @@ const Header = () => {
             </div>
 
             <div
-              className="text-black text-xs float-right"
+              className="text-black text-xs md:float-right float-left md:mt-0 mt-10"
               title={"Logged in as " + user.displayName}
             >
               <div>
                 <img
-                  className="w-24 mt-1 mb-1 p-1 rounded-full border-red-400 border-2"
+                  className="md:w-24 w-16 md:mx-0 mx-0 md:mt-1 mt-2 mb-1 p-1 rounded-full border-red-400 md:border-2 border-none"
                   src={
                     user.photoURL === null
                       ? { GUEST_USER_AVATAR }
