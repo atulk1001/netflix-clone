@@ -110,7 +110,7 @@ const Header = () => {
             >
               <div>
                 <img
-                  className="md:w-24 w-16 md:mx-0 mx-0 md:mt-1 mt-2 mb-1 p-1 rounded-full border-red-400 md:border-2 border-none"
+                  className="md:w-24 w-16 md:mx-0 mx-0 md:mt-1 mt-2 mb-1 p-1 md:ml-0 ml-[35%] rounded-full border-red-400 md:border-2 border-none"
                   src={
                     user.photoURL === null
                       ? { GUEST_USER_AVATAR }
